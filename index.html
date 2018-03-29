@@ -187,30 +187,29 @@
     var getFireBallSpeed;
 
     function identifyFireBallDirection(left) {
-if(left){
-return 5;
-}
-
-else {
-  return 2;
-}
+      if(left) {
+        return 5;
+      }
+    
+    else {
+      return 2;
+      }
       }
 
         getFireBallSpeed = identifyFireBallDirection();
         wizardSpeed = 3;
         wizardWidth = 70;
 
-    function countWizHeight () {
-return 1.337 * wizardWidth;
-    }
-getWizardHeight = countWizHeight();
+        getWizardHeight = function countWizHeight () {
+          return 1.337 * wizardWidth;
+        }
 
     function getWizardX(width) {
-return width/2;
-    }
-function getWizardY(height) {
-return (2*height)/3;
-}
+          return width/2;
+        }
+        function getWizardY(height) {
+          return (2*height)/3;
+        }
 
   </script>
   
