@@ -188,18 +188,18 @@
     getFireballSpeed = function identifyFireBallDirection (left) {
       return left ? 5 : 2;
     }
-    wizardSpeed = 3;
-    wizardWidth = 70;
+    var wizardSpeed = 3;
+    var wizardWidth = 70;
 
     getWizardHeight = function countWizHeight() {
       return 1.337 * wizardWidth;
     }
-    function getWizardX(width) {
+    var getWizardX = function(width) {
       return width/2;
-    }
-    function getWizardY(height) {
+    }   
+    var getWizardY = function(height) {
       return (2*height)/3;
-    }
+    }  
 
   </script>
   
