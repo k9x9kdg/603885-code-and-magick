@@ -39,8 +39,8 @@ var renderStatistics = function (ctx, names, times) {
     if (names [i] === 'Вы') {
       ctx.fillStyle = 'rgb(227, 5, 30)';
     } else {
-      ctx.fillStyle = 'rgb(' +  getRandomInt(1, 155) + ',' +
-        getRandomInt(1, 155) + ', 255)';
+      ctx.fillStyle = 'rgb(' +  getRandomInt(45, 110) + ',' +
+        getRandomInt(0, 70) + ', 255)';
     }
     var actualTime = Math.round((BAR_HEIGHT * times[i]) / getMaxTime(times));
     var barY = CLOUD_HEIGHT - barCorrection - actualTime - CLOUD_GAP;
