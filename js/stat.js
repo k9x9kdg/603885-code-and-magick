@@ -17,22 +17,30 @@ var getMaxTime = function (times) {
       maxTime = times[i];
     }
   }
-  return maxTime; // находим максимальное время
-};
+  return maxTime;
+}; // находим максимальное время
 
 var renderCloud = function (ctx, x, y, color) {
   ctx.fillStyle = color;
   ctx.fillRect(x, y, CLOUD_WIDTH, CLOUD_HEIGHT);
 }; // функция отрисовки окна статистики
 
+var getRandomInt = function (min, max) {
+  return Math.round(Math.random() * (max - min + 1)) + min;
+}; // получение случайного числа в промежутке от min до max
+
+var drawText = function (ctx, text, x, y) {
+  ctx.fillStyle = 'rgb(0, 0, 0)';
+  ctx.fillText(text, x, y);
+}; // функция отрисовки текста
+
+
 var renderStatistics = function (ctx, names, times) {
   renderCloud(ctx, CLOUD_X + CLOUD_GAP, CLOUD_Y + CLOUD_GAP, 'rgba(0, 0, 0, 0.7)'); // рисуем тень
   renderCloud(ctx, CLOUD_X, CLOUD_Y, 'rgba(255, 255, 255, 1)'); // рисуем белый прямоугольник
-  getMaxTime(times);
   ctx.font = '16px pt mono'; // задаем шрифт
-  ctx.fillStyle = 'rgb(0, 0, 0)'; // задаем цвет
-  ctx.fillText('Ура вы победили!', CLOUD_X + 2 * CLOUD_GAP, CLOUD_Y + 3 * CLOUD_GAP);
-  ctx.fillText('Список результатов:', CLOUD_X + 2 * CLOUD_GAP, CLOUD_Y + 5 * CLOUD_GAP);
+  drawText(ctx, 'Ура вы победили!', CLOUD_X + 2 * CLOUD_GAP, CLOUD_Y + 3 * CLOUD_GAP);
+  drawText(ctx, 'Список результатов:',  CLOUD_X + 2 * CLOUD_GAP, CLOUD_Y + 5 * CLOUD_GAP);
   for (var i = 0; i < names.length; i++) {
     ctx.fillStyle = 'rgb(0, 0, 0)';
     ctx.fillText(names[i], BAR_X + (i * gap), CLOUD_HEIGHT - CLOUD_GAP);
@@ -40,12 +48,12 @@ var renderStatistics = function (ctx, names, times) {
       ctx.fillStyle = 'rgb(227, 5, 30)';
     } else {
       ctx.fillStyle = 'rgb(' +  getRandomInt(45, 110) + ',' +
-        getRandomInt(0, 70) + ', 255)';
+        getRandomInt(0, 100) + ', 255)';
     }
     var actualTime = Math.round((BAR_HEIGHT * times[i]) / getMaxTime(times));
     var barY = CLOUD_HEIGHT - barCorrection - actualTime - CLOUD_GAP;
     ctx.fillRect(BAR_X + (i * gap), barY + CLOUD_GAP, BAR_WIDTH, actualTime);
-    ctx.fillStyle = 'rgb(0, 0, 0)';
-    ctx.fillText(Math.round(times[i]), BAR_X + (i * gap), barY);
+    drawText(ctx, Math.round(times[i]), BAR_X + (i * gap), barY);
   } // рисуем статистику
 };
+
