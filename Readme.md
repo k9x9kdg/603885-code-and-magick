@@ -1,7 +1,7 @@
 # Учебный проект «Код и Магия» [![Build status][travis-image]][travis-url]
 
 * Студент: [Кирилл Борунов](https://up.htmlacademy.ru/javascript/13/user/603885).
-* Наставник: `Неизвестно`.
+* Наставник: Вадим Протасов.
 
 ---
 
